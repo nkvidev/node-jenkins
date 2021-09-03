@@ -1,0 +1,1 @@
+docker run -v $(pwd):/server:ro -v /server/node_modules --env-file ./.env -p 5000:4000 -d --name node-container node-image
