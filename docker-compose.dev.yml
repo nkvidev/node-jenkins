@@ -1,0 +1,15 @@
+version: "3"
+services:
+    node-container:
+        build:
+            context: ./
+            args:
+                NODE_ENV: development
+        volumes:
+            - ./:/server
+            - /server/node_modules
+        environment:
+            - NODE_ENV=development
+        command: npm run dev #override command
+        # env_file:
+        # -./.env
