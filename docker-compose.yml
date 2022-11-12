@@ -2,6 +2,7 @@ version: "3"
 services:
   api-server:
     build: ./
+    image: nkvi/api-server
     ports:
       - "5000:4000"
     volumes:
