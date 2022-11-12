@@ -1,16 +1,19 @@
 import express from "express";
-import mongoose from "mongoose";
+import dotenv from 'dotenv';
+dotenv.config({})
+
+// import mongoose from "mongoose";
 const app = express();
-await mongoose
-    .connect(
-        "mongodb://myusername:mypassword@172.28.0.2:27017/?authSource=admin"
-    )
-    .then(() => {
-        console.log(`[*] mongoDB connected`);
-    })
-    .catch((e) => {
-        console.log(`Err: ${JSON.stringify(e)}`);
-    });
+// await mongoose
+//     .connect(
+//         "mongodb://myusername:mypassword@172.28.0.2:27017/?authSource=admin"
+//     )
+//     .then(() => {
+//         console.log(`[*] mongoDB connected`);
+//     })
+//     .catch((e) => {
+//         console.log(`Err: ${JSON.stringify(e)}`);
+//     });
 app.set("PORT", process.env.PORT || 3000);
 
 app.get("/", (req, res) => {
