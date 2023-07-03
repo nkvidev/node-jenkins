@@ -12,9 +12,7 @@ pipeline {
                 sh 'printenv'
                 script{
                     docker.withServer(MASTER_DOCKER_SERVER) {
-                        docker.withRegistry("https://index/docker.io/v1/", 'dockerhub'){
-                            def app = docker.build("vinguyensens/learn-jenkins:$GIT_BRANCH").push()
-                        }
+                        docker.build("$PROJECT_NAME:$env.GIT_BRANCH", "-f ./Dockerfile .")
                     }
                     
                 }
