@@ -6,14 +6,12 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent {
-                docker { image 'node:18.16.0-alpine' }
-            }
+            agent { dockerfile true }
             steps {
                 echo 'Building..'
                 sh 'printenv'
                 script {
-                    docker.build("$PROJECT_NAME:landing-$GIT_BRANCH", "-f ./Dockerfile .")
+                    docker.build("$PROJECT_NAME:$GIT_BRANCH", "-f ./Dockerfile .")
                 }
             }
         }
