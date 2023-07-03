@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    evironment {
+    environment {
         PROJECT_NAME="learn-jenkins"
     }
 
