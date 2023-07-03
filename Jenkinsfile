@@ -6,6 +6,9 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent {
+                docker { image 'node:18.16.0-alpine' }
+            }
             steps {
                 echo 'Building..'
                 sh 'printenv'
