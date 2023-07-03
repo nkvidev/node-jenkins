@@ -6,12 +6,11 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent { dockerfile true }
             steps {
                 echo 'Building..'
                 sh 'printenv'
-                script {
-                    docker.build("$PROJECT_NAME:$GIT_BRANCH", "-f ./Dockerfile .")
+                docker.withRegistry("https://index/docker.io/v1/", 'dockerhub'){
+                    def app = docker.build("vinguyensens/learn-jenkins:$GIT_BRANCH").push()
                 }
             }
         }
