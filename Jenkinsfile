@@ -12,7 +12,9 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'printenv'
-                docker.build("$PROJECT_NAME:landing-$GIT_BRANCH", "-f ./Dockerfile .")
+                script {
+                    docker.build("$PROJECT_NAME:landing-$GIT_BRANCH", "-f ./Dockerfile .")
+                }
             }
         }
         stage('Test') {
